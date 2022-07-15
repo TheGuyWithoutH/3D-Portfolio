@@ -19,14 +19,14 @@ https://github.com/sno/unity-webgl-responsive
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
 
-    <title>Portfolio</title>
+    <title>{{{ PRODUCT_NAME }}}</title>
   </head>
   <body>
     <div class="webgl-wrapper">
       <div class="aspect"></div>
       <div class="webgl-content">
         <div id="unityContainer">
-          <canvas id="unity-canvas" style="background: #231F20"></canvas>
+          <canvas id="unity-canvas" style="background: {{{ BACKGROUND_FILENAME ? 'url(\'Build/' + BACKGROUND_FILENAME.replace(/'/g, '%27') + '\') center / cover' : BACKGROUND_COLOR }}}"></canvas>
         </div>
       </div>
     </div>
@@ -45,13 +45,19 @@ https://github.com/sno/unity-webgl-responsive
     <script src="MyLoader.js"></script>
     <script>
       createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/WebGL Builds.data.gz",
-        frameworkUrl: "Build/WebGL Builds.framework.js.gz",
-        codeUrl: "Build/WebGL Builds.wasm.gz",
+        dataUrl: "Build/{{{ DATA_FILENAME }}}",
+        frameworkUrl: "Build/{{{ FRAMEWORK_FILENAME }}}",
+        codeUrl: "Build/{{{ CODE_FILENAME }}}",
+#if MEMORY_FILENAME
+        memoryUrl: "Build/{{{ MEMORY_FILENAME }}}",
+#endif
+#if SYMBOLS_FILENAME
+        symbolsUrl: "Build/{{{ SYMBOLS_FILENAME }}}",
+#endif
         streamingAssetsUrl: "StreamingAssets",
-        companyName: "DefaultCompany",
-        productName: "Portfolio",
-        productVersion: "0.1",
+        companyName: "{{{ COMPANY_NAME }}}",
+        productName: "{{{ PRODUCT_NAME }}}",
+        productVersion: "{{{ PRODUCT_VERSION }}}",
       }).then((unityInstance) => {
         myGameInstance = unityInstance;
       });
