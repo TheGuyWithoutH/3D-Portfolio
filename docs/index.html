@@ -19,14 +19,15 @@ https://github.com/sno/unity-webgl-responsive
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
 
-    <title>Portfolio</title>
+    <title>Ugo Balducci's Portfolio</title>
   </head>
   <body>
     <div class="webgl-wrapper">
+      <text id="loading-text" style="position: absolute; top: 0; bottom: 0; right: 0; left: 0; z-index: 1; transform: translate(0px, 50%); margin: auto; font-size: 2vw; color: white; text-align: center;">Loading 0%</text>
       <div class="aspect"></div>
       <div class="webgl-content">
         <div id="unityContainer">
-          <canvas id="unity-canvas" style="background: #231F20"></canvas>
+          <canvas id="unity-canvas" style="background: #0A0E12"></canvas>
         </div>
       </div>
     </div>
@@ -43,16 +44,18 @@ https://github.com/sno/unity-webgl-responsive
     </div>-->
 
     <script src="MyLoader.js"></script>
+    <script src="Progress.js"></script>
     <script>
       createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/WebGL Builds.data.unityweb",
-        frameworkUrl: "Build/WebGL Builds.framework.js.unityweb",
-        codeUrl: "Build/WebGL Builds.wasm.unityweb",
+        dataUrl: "Build/d3f4f0a54c18afd3a2f191e4ba79a93d.data.unityweb",
+        frameworkUrl: "Build/69ae64cb42bb99b4c01a75e7f44c9074.js.unityweb",
+        codeUrl: "Build/f12403ed3444fa33b4ceeb9a5896c47d.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
-        companyName: "DefaultCompany",
-        productName: "Portfolio",
-        productVersion: "0.1",
-      }).then((unityInstance) => {
+        companyName: "Ugo Balducci",
+        productName: "Ugo Balducci's Portfolio",
+        productVersion: "1.0",
+      }, onProgress).then((unityInstance) => {
+        removeProgress();
         myGameInstance = unityInstance;
       });
     </script>

@@ -23,6 +23,10 @@ https://github.com/sno/unity-webgl-responsive
   </head>
   <body>
     <div class="webgl-wrapper">
+      <div class="loading" id="loading-div" style="position: absolute; top: 0; bottom: 0; right: 0; left: 0; z-index: 1; margin: auto;">
+        <img src="assets/Plan%20de%20travail%201splash-screen.png" alt="coding..." style="width: 100%"/>
+        <text id="loading-text" style="position: absolute; top: 0; bottom: 0; right: 0; left: 0; margin: auto; font-size: 2vw; color: white; text-align: center; z-index: 2; transform: translate(0px, 50%)">Loading 0%</text>
+      </div>
       <div class="aspect"></div>
       <div class="webgl-content">
         <div id="unityContainer">
@@ -43,6 +47,7 @@ https://github.com/sno/unity-webgl-responsive
     </div>-->
 
     <script src="MyLoader.js"></script>
+    <script src="Progress.js"></script>
     <script>
       createUnityInstance(document.querySelector("#unity-canvas"), {
         dataUrl: "Build/{{{ DATA_FILENAME }}}",
@@ -58,8 +63,9 @@ https://github.com/sno/unity-webgl-responsive
         companyName: "{{{ COMPANY_NAME }}}",
         productName: "{{{ PRODUCT_NAME }}}",
         productVersion: "{{{ PRODUCT_VERSION }}}",
-      }).then((unityInstance) => {
+      }, onProgress).then((unityInstance) => {
         myGameInstance = unityInstance;
+        removeProgress();
       });
     </script>
 

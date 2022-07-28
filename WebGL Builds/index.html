@@ -19,14 +19,18 @@ https://github.com/sno/unity-webgl-responsive
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
 
-    <title>Portfolio</title>
+    <title>Ugo Balducci's Portfolio</title>
   </head>
   <body>
     <div class="webgl-wrapper">
+      <div class="loading" id="loading-div" style="position: absolute; top: 0; bottom: 0; right: 0; left: 0; z-index: 1; margin: auto;">
+        <img src="assets/Plan%20de%20travail%201splash-screen.png" alt="coding..." style="width: 100%"/>
+        <text id="loading-text" style="position: absolute; top: 0; bottom: 0; right: 0; left: 0; margin: auto; font-size: 2vw; color: white; text-align: center; z-index: 2; transform: translate(0px, 50%)">Loading 0%</text>
+      </div>
       <div class="aspect"></div>
       <div class="webgl-content">
         <div id="unityContainer">
-          <canvas id="unity-canvas" style="background: #231F20"></canvas>
+          <canvas id="unity-canvas" style="background: #0A0E12"></canvas>
         </div>
       </div>
     </div>
@@ -43,17 +47,19 @@ https://github.com/sno/unity-webgl-responsive
     </div>-->
 
     <script src="MyLoader.js"></script>
+    <script src="Progress.js"></script>
     <script>
       createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/WebGL Builds.data.unityweb",
-        frameworkUrl: "Build/WebGL Builds.framework.js.unityweb",
-        codeUrl: "Build/WebGL Builds.wasm.unityweb",
+        dataUrl: "Build/e17ade25a1ef1f0b324756d49b21a56a.data.unityweb",
+        frameworkUrl: "Build/cf25b6b44f17902d36dea70682324b17.js.unityweb",
+        codeUrl: "Build/92be2d2fbdb6a3733396a1608ba5f295.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
-        companyName: "DefaultCompany",
-        productName: "Portfolio",
-        productVersion: "0.1",
-      }).then((unityInstance) => {
+        companyName: "Ugo Balducci",
+        productName: "Ugo Balducci's Portfolio",
+        productVersion: "1.0",
+      }, onProgress).then((unityInstance) => {
         myGameInstance = unityInstance;
+        removeProgress();
       });
     </script>
 
